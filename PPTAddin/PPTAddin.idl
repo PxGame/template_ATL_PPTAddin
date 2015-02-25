@@ -1,0 +1,34 @@
+// PPTAddin.idl : PPTAddin 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(PPTAddin.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(DC00892E-FCDD-4D5E-911F-AD191909FFF7),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ISimpleAddin : IDispatch{
+};
+[
+	uuid(4DE286C3-8CDE-4AD1-8328-222F141C8BD2),
+	version(1.0),
+]
+library PPTAddinLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(B9E13720-088B-4521-81FB-30F312758B6B)		
+	]
+	coclass SimpleAddin
+	{
+		[default] interface ISimpleAddin;
+	};
+};
+

@@ -1,0 +1,52 @@
+HKCR
+{
+	PPT.SimpleAddin.1 = s 'SimpleAddin Class'
+	{
+		CLSID = s '{B9E13720-088B-4521-81FB-30F312758B6B}'
+	}
+	PPT.SimpleAddin = s 'SimpleAddin Class'
+	{		
+		CurVer = s 'PPT.SimpleAddin.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B9E13720-088B-4521-81FB-30F312758B6B} = s 'SimpleAddin Class'
+		{
+			ProgID = s 'PPT.SimpleAddin.1'
+			VersionIndependentProgID = s 'PPT.SimpleAddin'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{4DE286C3-8CDE-4AD1-8328-222F141C8BD2}'
+			Version = s '1.0'
+		}
+	}
+}
+
+HKCU
+{
+	NoRemove Software
+	{
+		NoRemove Microsoft
+		{
+			NoRemove Office
+			{
+				NoRemove PowerPoint
+				{
+					NoRemove Addins
+					{
+						ForceRemove 'PPT.SimpleAddin'
+						{
+							val FriendlyName = s 'BaiYi PowerPoint Addin'
+							val Description = s 'BaiYi PowerPoint Addin'
+							val LoadBehavior = d '00000003'
+							val CommandLineSafe = d '00000001'
+						}
+					}
+				}
+			}
+		}
+	}
+}
